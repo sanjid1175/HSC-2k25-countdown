@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC Exam Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #FFB6C1, #FF6347);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .countdown-container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Verdana', sans-serif;
+        }
+
+        .countdown {
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .countdown span {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown-container">
+        <h1>HSC Exam Countdown</h1>
+        <div id="countdown" class="countdown">
+            <span>00d</span>
+            <span>00h</span>
+            <span>00m</span>
+            <span>00s</span>
+        </div>
+    </div>
+
+    <script>
+        // Set the date for HSC exam (26th June 2025)
+        const hscExamDate = new Date("2025-06-26T00:00:00");
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeLeft = hscExamDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            // Update countdown display
+            document.getElementById("countdown").innerHTML =
+                `<span>${days}d</span>
+                 <span>${hours}h</span>
+                 <span>${minutes}m</span>
+                 <span>${seconds}s</span>`;
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial call to display the countdown immediately
+        updateCountdown();
+    </script>
+
+</body>
+</html>
+
